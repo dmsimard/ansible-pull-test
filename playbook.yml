@@ -1,0 +1,22 @@
+- name: Hello world, ansible-pull!
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Collect some facts
+      setup:
+        gather_subset:
+          - '!all'
+          - '!any'
+          - date_time
+          - distribution
+          - dns
+          - kernel
+          - python
+
+    - name: Print the inventory hostname
+      debug:
+        msg: "{{ inventory_hostname }}"
+
+    - name: Print Ansible running processes
+      shell: ps fauxwww | grep -i ansible-pull
+      changed_when: false
