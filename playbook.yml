@@ -20,3 +20,11 @@
     - name: Print Ansible running processes
       shell: ps fauxwww | grep -i ansible-pull
       changed_when: false
+
+    - name: Test
+      community.general.ini_file:
+       path: /tmp/testfile.ini
+       section: defaults
+       option: setting
+       value: value
+
